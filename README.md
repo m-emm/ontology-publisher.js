@@ -41,6 +41,7 @@ This application does **not** aim to be a modelling tool, therefore you can't ch
 ![Concepts](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Concepts.png "Concepts")
 ![Individuals](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Individuals.png "Individuals")
 ![Concept Browser](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/ConceptBrowser.png "Concept Browser")
+![Admin](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Admin2.png "Admin")
 
 ## Acknowledgements
 * Thanks to the [rdflib.js](https://github.com/linkeddata/rdflib.js) team for their library which lets me directly import ontologies
