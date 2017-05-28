@@ -21,7 +21,7 @@ The tool was inspired by [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), bu
    Select a .ttl file to upload under "Load ontology file"  
    Enter a name for the ontology and press "Import"  
    (For a start, you can use the test ontology family from `src/rdflibutil/test_family.tt`)
-* press "New View", and you will be switched to a new graphical View
+* press "New View", and you will be switched to a new graphical view
 * enter a name for your view and press "Save"
 * now you can modify the view to your liking (move nodes around, filter out instances, classes, relationships) - don't forget to save!
 * you can add more named views for the same ontology, as needed
