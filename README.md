@@ -33,6 +33,11 @@ The tool was inspired by [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), bu
 
   You can upload the resulting document later, or share it with somebody else so they can look at your ontology and the views.
 
+## Screensots
+![Individuals](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Individuals.png "Individuals")
+![Concepts](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Concepts.png "Concepts")
+
+
 ## Acknowledgements
 * Thanks to the [rdflib.js](https://github.com/linkeddata/rdflib.js) team for their library which lets me directly import ontologies
 * Many thanks to the WebVOWL team who have created the amazing [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), on which this project is heavily based. I have included the full source code of WebVOWL here, because I had to tweak it somewhat to make it work.
