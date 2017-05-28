@@ -21,7 +21,7 @@ var webpackConfiguration = {
 	},
 	output : {
 		path : path.join(__dirname, 'static/'),
-		filename : 'avq-ontology.js'
+		filename : 'ontology-publisher.js'
 	},
 	module : {
 		loaders : [
