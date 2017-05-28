@@ -1,6 +1,6 @@
 # ontology-publisher.js
 
-This application let you publish an ontology as an interactive document. The document can contain multiple graphical renderings of your ontology which you can design according to what you want to communicate.
+This application lets you publish an ontology as an interactive document. The document can contain multiple graphical renderings of your ontology which you can design according to what you want to communicate.
 It was inspired by [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), but uses Angular.js for the user interface (instead of raw d3), and adds .ttl file import and some basic reasoning to make the resulting ontology document more complete and useful.
  
 ## Acknowledgements
