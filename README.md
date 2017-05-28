@@ -8,6 +8,8 @@ The tool was inspired by [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), bu
 * a concept browser
 * some basic reasoning functionality (inference of inverses, inferable transitive relations) to make the resulting ontology document more complete and useful
 
+The application is webpacked into a static web application and requires no server to run but can be run directly from the filesystem. By zipping the static content you can provide it to anybody who can then view your ontology without installing any development tools.
+
 This application does **not** aim to be a modelling tool, therefore you can't change the ontology itself (use a tool such as Protégé for this purpose). It is meant to produce a browsable, viewable document to get feedback on your model from users and domain experts.
 
 ## Setup and start
