@@ -1,0 +1,7 @@
+node_modules
+static
+**/Thumbs.db
+**/npm-debug.log*
+**/debug.log
+/log.txt
+/version.json

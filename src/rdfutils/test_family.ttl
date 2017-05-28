@@ -1,0 +1,243 @@
+@prefix : <https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://github.com/m-emm/ontology-publisher.js/ontologies/test/family> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#isAncestorOf
+
+:isAncestorOf a owl:ObjectProperty , owl:TransitiveProperty .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#isChildOf
+
+:isChildOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isDecendantOf ;
+	owl:inverseOf :isParentOf ;
+	owl:propertyDisjointWith :isParentOf , :isSpouseOf .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#isDecendantOf
+
+:isDecendantOf a owl:ObjectProperty , owl:TransitiveProperty .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#isParentOf
+
+:isParentOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isAncestorOf ;
+	owl:propertyDisjointWith :isSpouseOf .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#isSpouseOf
+
+:isSpouseOf a owl:ObjectProperty , owl:SymmetricProperty .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#livesWith
+
+:livesWith a owl:ObjectProperty , owl:SymmetricProperty , owl:TransitiveProperty ;
+	rdfs:domain :LivingThing ;
+	rdfs:range :LivingThing .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Angela
+
+:Angela a owl:Class ;
+	rdfs:subClassOf :Woman .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Animal
+
+:Animal a owl:Class ;
+	rdfs:subClassOf :LivingThing ;
+	owl:disjointWith :Person .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Barky
+
+:Barky a owl:Class ;
+	rdfs:subClassOf :Pet .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Bert
+
+:Bert a owl:Class ;
+	rdfs:subClassOf :Man .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Boy
+
+:Boy a owl:Class ;
+	rdfs:subClassOf :MalePerson .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#FemalePerson
+
+:FemalePerson a owl:Class ;
+	rdfs:subClassOf :Person .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Ginny
+
+:Ginny a owl:Class ;
+	rdfs:subClassOf :Girl .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Girl
+
+:Girl a owl:Class ;
+	rdfs:subClassOf :FemalePerson .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Gram
+
+:Gram a owl:Class ;
+	rdfs:subClassOf :Woman .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#House
+
+:House a owl:Class ;
+	owl:equivalentClass :Residence ;
+	rdfs:subClassOf :TestFamilyConcept .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#HouseAtFirstStreet88
+
+:HouseAtFirstStreet88 a owl:Class ;
+	rdfs:subClassOf :House .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#HouseAtJumpStreet9
+
+:HouseAtJumpStreet9 a owl:Class ;
+	rdfs:subClassOf :Residence .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#HouseAtSesameStreet16
+
+:HouseAtSesameStreet16 a owl:Class ;
+	rdfs:subClassOf :House .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#LivingThing
+
+:LivingThing a owl:Class ;
+	rdfs:subClassOf :TestFamilyConcept .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Looptest
+
+:Looptest a owl:Class ;
+	rdfs:subClassOf :Person .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Looptest2
+
+:Looptest2 a owl:Class ;
+	rdfs:subClassOf :Looptest , :Looptest3 .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Looptest3
+
+:Looptest3 a owl:Class ;
+	rdfs:subClassOf :Looptest2 , :TestFamilyConcept .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#MalePerson
+
+:MalePerson a owl:Class ;
+	rdfs:subClassOf :Person .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Man
+
+:Man a owl:Class ;
+	rdfs:subClassOf :MalePerson .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Person
+
+:Person a owl:Class ;
+	rdfs:subClassOf :LivingThing .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Pet
+
+:Pet a owl:Class ;
+	rdfs:subClassOf :Animal .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Residence
+
+:Residence a owl:Class ;
+	rdfs:subClassOf :TestFamilyConcept .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#TestFamilyConcept
+
+:TestFamilyConcept a owl:Class .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Woman
+
+:Woman a owl:Class ;
+	rdfs:subClassOf :FemalePerson .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Alice
+
+:Alice a owl:NamedIndividual , :Girl .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Angela
+
+:Angela a owl:NamedIndividual , :Angela .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Barky
+
+:Barky a owl:NamedIndividual , :Barky ;
+	:livesWith :Ginny .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Bert
+
+:Bert a owl:NamedIndividual , :Bert ;
+	:isSpouseOf :Angela ;
+	:livesWith :Angela .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Ginny
+
+:Ginny a owl:NamedIndividual , :Ginny ;
+	:isChildOf :Angela , :Bert ;
+	:livesWith :Bert .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#Gram
+
+:Gram a owl:NamedIndividual , :Gram ;
+	:isParentOf :Bert ;
+	:livesWith :Gram .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#HouseAtFirstStreet88
+
+:HouseAtFirstStreet88 a owl:NamedIndividual , :HouseAtFirstStreet88 .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#HouseAtJumpStreet9
+
+:HouseAtJumpStreet9 a owl:NamedIndividual , :HouseAtJumpStreet9 .
+# 
+# https://github.com/m-emm/ontology-publisher.js/ontologies/test/family#HouseAtSesameStreet16
+
+:HouseAtSesameStreet16 a owl:NamedIndividual , :HouseAtSesameStreet16 .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Annotations
+# #
+# #################################################################
+# 
+# 
+
+:Barky rdfs:comment "This is Barky the dog" .
+# 
+# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi

@@ -1,0 +1,120 @@
+
+<div data-ng-controller="GraphController as graphController">
+	<div class="row">
+		<div class="col-md-12">
+			<H2>
+				{{graphController.ontologyName}}<span data-ng-hide="graphController.isNewView">: {{graphController.view}}</span>
+			</H2>
+			<ul class="nav nav-pills">
+				<li ng-repeat="view in graphController.views" role="presentation" ng-class="{ active: view.active } "><a
+					href="#!/graph/{{graphController.ontologyName}}/{{view.name}}">{{view.name}}</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row" data-ng-hide="graphController.editable()">
+		<div class="col-md-2">Selection:</div>
+		<div class="col-md-8">
+			<ul class="list-unstyled">
+				<li><a href="#!/objectview/{{graphController.ontologyName}}/{{graphController.selectedElement.short}}">{{graphController.selectedElement.iri}}</a></li>
+				<li>{{graphController.selectedElement.type}}</li>
+			</ul>
+		</div>
+		<div class="col-md-2"><button class="btn btn-default btn-xs" data-ng-click="graphController.startEdit()">Edit</button></div>
+	</div>
+
+
+	<div class="panel panel-default">
+		<div class="row panel-body" data-ng-show="graphController.editable()">
+			<div class="col-md-1">
+				<form class="form form-inline">
+					<button class="btn btn-primary" data-ng-hide="graphController.isNewView" data-ng-click="graphController.savePositions()">Save</button>
+					<div class="form-group" data-ng-show="graphController.isNewView">
+						<label for="newViewName" class="col-2 col-form-label">{{'NEW_VIEW_NAME' | translate}}</label> <input class="form-control"
+							type="text" data-ng-model="graphController.newViewName" id="newViewName" name="newViewName">
+					</div>
+
+					<button class="btn btn-primary" data-ng-show="graphController.isNewView" data-ng-click="graphController.saveAs()">{{
+						'SAVE_AS' | translate }}</button>
+
+
+				</form>
+				<div class="row">
+					<div class="col-md-12 h5">{{graphController.loadedView.saveDate | date:'dd-MM-yyyy HH:mm:ss'}}</div>
+				</div>
+			</div>
+
+			<div class="col-md-5 h5">
+				<div class="row">
+					<div class="col-md-9">
+						<ul class="list-unstyled">
+
+							<li><a href="#!/objectview/{{graphController.ontologyName}}/{{graphController.selectedElement.short}}">{{graphController.selectedElement.iri}}</a></li>
+							<li>{{graphController.selectedElement.type}}</li>
+
+						</ul>
+
+					</div>
+					<div class="col-md-3">
+						<button ng-disabled="!graphController.selectedElement.type" class="btn btn-sm btn-default"
+							data-ng-click="graphController.filterIri()">Filter</button>
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="col-md-2">
+				<form class="form">
+					<div class="checkbox">
+						<label> <input type="checkbox" data-ng-model="graphController.pickAndPin">Pick & Pin
+						</label>
+					</div>
+					<div class="checkbox">
+						<label> <input type="checkbox" data-ng-model="graphController.individuals">Show Individuals
+						</label>
+					</div>
+					<div class="checkbox">
+						<label> <input type="checkbox" data-ng-model="graphController.classes">Show Classes
+						</label>
+					</div>
+					
+					<div class="checkbox">
+						<label> <input type="checkbox" data-ng-model="graphController.disjoint">Show disjoint class relations
+						</label>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-2">
+				<form class="form">
+
+					<button class="btn btn-default" data-ng-click="graphController.resetIriFilter()">Reset Iri Filter</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+
+						<div id="graph"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5>Filtered objects</h5>
+			<ul>
+				<li data-ng-repeat="filtered in graphController.filteredIriList">{{filtered.iri}} <em> a {{filtered.type}} </em>
+					<button class="btn btn-default btn-xs" data-ng-click="graphController.unfilterIri(filtered)">unfilter</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

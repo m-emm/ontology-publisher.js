@@ -1,0 +1,15 @@
+{
+	"ADMIN": "Admin",
+	"OBJECTVIEW": "Concept Browser",
+	"GRAPH": "Graphical View",
+	"UPLOAD_DOC": "Upload Document",
+	"LOAD_DOC": "Load Document",
+	"REMOVE_VIEW": "Remove View",
+	"SAVE_AS": "Save as",
+	"NEW_VIEW_NAME":"New view name",
+	"DEFAULT" : "default",
+	"ONTOLOGIES_TITLE" : "Ontologies",
+	"REMOVE" : "Remove",
+	"DOWNLOAD_DOCUMENT" : "Download Document",
+	"UPLOAD_DOCUMENT" : "Upload Document"
+}

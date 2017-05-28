@@ -1,0 +1,120 @@
+<div ng-controller="ObjectViewController as objectViewController">
+	<p class="h7">
+		<em>{{objectViewController.fullUri}}</em> <span ng-if="objectViewController.isIndividual">(individual)</span> <span
+			ng-if="objectViewController.isClass">(class)</span>
+	</p>
+
+	<H1>
+		{{objectViewController.label}} <span ng-if="objectViewController.representation.abbreviation">
+			({{objectViewController.representation.abbreviation}})</span>
+	</H1>
+
+
+	<p class="h4">{{objectViewController.representation.comment}}
+	<div ng-if="objectViewController.representation.seeAlso">
+		<br>See also: <a target="_blank" href="{{objectViewController.representation.seeAlso}}">{{objectViewController.representation.seeAlso}}</a>
+	</div>
+	</p>
+	<div ng-if="objectViewController.equivalents.length > 0">
+		<em class="h4">Equivalent to <span ng-repeat="equivalent in objectViewController.equivalents"> <a
+				href="#!/objectview/{{objectViewController.ontologyName}}/{{equivalent.short}}"> {{equivalent.short}}</a></span>
+		</em>
+	</div>
+
+	<p>
+		<input type="text" ng-model="objectViewController.search">
+	<p>
+		
+	<div class="row" data-ng-show="objectViewController.isIndividual && objectViewController.typesOfIndividual && objectViewController.typesOfIndividual.length >0">
+		<div class="col-md-12">
+			<h4>
+				Member of <em ng-if="objectViewController.search">(filtered)</em>
+			</h4>
+
+			<table class="table">
+				<tr ng-repeat="individualType in filteredindividualTypes = (objectViewController.typesOfIndividual | filter : objectViewController.search)">
+					<td><a href="#!/objectview/{{objectViewController.ontologyName}}/{{individualType.shortName}}">{{individualType.shortName}}</a> <span
+						ng-if="individualType.abbreviation"> ({{individualType.abbreviation}})</span></td>
+					<td>{{individualType.comment}}</td>
+				</tr>
+			</table>
+			<em ng-if="objectViewController.search">[{{filteredindividualTypes.length}}/{{objectViewController.typesOfIndividual.length}}]</em> <span
+				ng-if="!objectViewController.search">[{{objectViewController.typesOfIndividual.length}}]</span>
+		</div>
+	</div>
+	<div data-ng-show="objectViewController.isIndividual">
+		<h4>Properties</h4>
+		<table class="table">
+			<tr ng-repeat="localProperty in objectViewController.allProperties">
+				<td><em ng-if="localProperty.inferred">{{localProperty.shortPredicate}}</em> <span ng-if="!localProperty.inferred">{{localProperty.shortPredicate}}</span>
+				</td>
+
+				<td ng-if="localProperty.short"><em ng-if="localProperty.inferred"><a
+						href="#!/objectview/{{objectViewController.ontologyName}}/{{localProperty.short}}"> {{localProperty.short}}</a></em> <span
+					ng-if="!localProperty.inferred"><a href="#!/objectview/{{objectViewController.ontologyName}}/{{localProperty.short}}">
+							{{localProperty.short}}</a></span></td>
+
+				<td ng-if="!localProperty.short"><em ng-if="localProperty.inferred">{{localProperty.object}}</em> <span
+					ng-if="!localProperty.inferred"> {{localProperty.object}}</span></td>
+
+			</tr>
+		</table>
+
+	</div>
+
+
+	
+	<div class="row" data-ng-show="objectViewController.supertypes.length >0">
+		<div class="col-md-12">
+			<h4>
+				<span ng-if="objectViewController.isIndividual">Member of</span> <span ng-if="!objectViewController.isIndividual">Subclass
+					of</span> <em ng-if="objectViewController.search">(filtered)</em>
+			</h4>
+
+			<table class="table">
+				<tr ng-repeat="supertype in filteredSupertypes = (objectViewController.supertypes | filter : objectViewController.search)">
+					<td><a href="#!/objectview/{{objectViewController.ontologyName}}/{{supertype.shortName}}">{{supertype.shortName}}</a> <span
+						ng-if="supertype.abbreviation"> ({{supertype.abbreviation}})</span></td>
+					<td>{{supertype.comment}}</td>
+					<!--  <td>{{supertype[1].object.value}}</td> -->
+
+				</tr>
+			</table>
+			<em ng-if="objectViewController.search">[{{filteredSupertypes.length}}/{{objectViewController.supertypes.length}}]</em> <span
+				ng-if="!objectViewController.search">[{{objectViewController.supertypes.length}}]</span>
+		</div>
+	</div>
+	<div class="row" data-ng-show="objectViewController.subtypes.length >0">
+		<div class="col-md-12">
+			<h4>
+				Subtypes <em ng-if="objectViewController.search">(filtered) [{{filteredSubtypes.length}}]/</em>
+				[{{objectViewController.subtypes.length}}]
+			</h4>
+			<table class="table h7">
+				<tr ng-repeat="subtype in filteredSubtypes =(objectViewController.subtypes | filter : objectViewController.search)">
+					<td><a href="#!/objectview/{{objectViewController.ontologyName}}/{{subtype.shortName}}"> {{subtype.shortName}}</a> <span
+						ng-if="subtype.abbreviation"> ({{subtype.abbreviation}})</span></td>
+					<td>{{subtype.comment}}
+						<div ng-if="subtype.seeAlso">
+							<br>See also <a target="_blank" href="{{subtype.seeAlso}}">{{subtype.seeAlso}}</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="row" data-ng-show="objectViewController.members.length >0">
+		<div class="col-md-12">
+			<h4>
+				Members <em ng-if="objectViewController.search">(filtered)[{{filteredMembers.length}}]/</em>[{{objectViewController.members.length}}]
+			</h4>
+			<table class="table h7">
+				<tr ng-repeat="member in filteredMembers = (objectViewController.members | filter : objectViewController.search)">
+					<td><a href="#!/objectview/{{objectViewController.ontologyName}}/{{member[2]}}"> {{member[2]}}</a></td>
+
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

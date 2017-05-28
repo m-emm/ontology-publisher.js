@@ -1,0 +1,108 @@
+
+<div class="row" data-ng-controller="AdminController as adminController">
+	<div class="col-md-12">
+		<H1>{{'ADMIN' |  translate}}</H1>
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Current Ontology: {{adminController.ontologyName}}</h2>
+				<form class="form">
+					<div class="checkbox">
+						<label> <input type="checkbox" data-ng-model="adminController.editableFlag">Graphs editable
+						</label>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-md-12">
+						<H3>Views</H3>
+						<div class="row" data-ng-repeat="view in adminController.views">
+							<div class="col-md-2">
+								<a data-ng-hide="adminController.isBeingRenamed(view)" class="h4"
+									href="#!/graph/{{adminController.ontologyName}}/{{view.name}}">{{view.name}}</a> <em data-ng-show="view.default">
+									({{'DEFAULT' | translate }})</em><input data-ng-show="adminController.isBeingRenamed(view)" class="h4" type="text"
+									data-ng-model="adminController.viewRename">
+							</div>
+							<div class="col-md-6">
+								<button class="btn btn-sm btn-default" data-ng-click="adminController.renameView(view)"
+									data-ng-disabled="adminController.renaming" data-ng-hide="adminController.isBeingRenamed(view)">Rename</button>
+								<button class="btn btn-sm btn-default" data-ng-click="adminController.storeRenameView()"
+									data-ng-show="adminController.isBeingRenamed(view)">Store</button>
+								<button class="btn btn-sm btn-default" data-ng-click="adminController.setDefaultView(view)">Set as Default</button>
+								<button class="btn btn-sm btn-warning" data-ng-click="adminController.removeView(view)">{{'REMOVE_VIEW' | translate}}</button>
+							</div>
+						</div>
+						<div class="row">
+							<button class="btn btn-default" data-ng-click="adminController.newView()">New View</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<H2>{{'ONTOLOGIES_TITLE'|translate}}</H2>
+				<div class="row" data-ng-repeat="ontology in adminController.ontologies">
+					<div class="col-md-2">
+						<span data-ng-class="{ h4 : adminController.isOntologyLoaded(ontology)} ">{{ontology.name}}</span>
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-default" data-ng-disabled="adminController.isOntologyLoaded(ontology)"
+							data-ng-click="adminController.loadFromStorage(ontology)">Load</button>
+						<button class="btn btn-default" data-ng-disabled="!adminController.couldBeReloaded(ontology)"
+							data-ng-click="adminController.reloadFromFile(ontology)">Reload</button>
+						<button class="btn btn-warning" data-ng-click="adminController.removeOntology(ontology)">{{'REMOVE' | translate}}</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12">
+				<H2>Download Document</H2>
+				<button class="btn btn-default" data-ng-click="adminController.prepareDownload()">Prepare</button>
+				<a href="{{adminController.databaseData}}" data-ng-show="adminController.dataReady" download="document.json">Download</a>
+			</div>
+		</div>
+
+	<div class="row">
+			<div class="col-md-12">
+				<H2>{{ 'UPLOAD_DOC' | translate}}</H2>
+				<form class="form">
+					<div class="form-group">
+						<label for="loadDocFile">Load Document File</label> <input type="file" fileread="adminController.docFileData" id="loadDocFile" />
+					</div>
+					<button type="submit" class="btn btn-primary" data-ng-click="adminController.loadDoc()">{{ 'LOAD_DOC' | translate}}</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<H2>Import Ontology</H2>
+
+				<form class="form">
+					<div class="form-group">
+						<label for="loadFile">Load Ontology File</label> <input type="file" fileread="adminController.fileData" id="loadFile" />
+					</div>
+					<div class="form-group ">
+						<label for="ontology-name" class="col-2 col-form-label">Ontology Name</label> <input class="form-control" type="text"
+							data-ng-model="adminController.ontologyName" id="ontology-name">
+					</div>
+					<button type="submit" class="btn btn-primary" data-ng-click="adminController.save()">Import</button>
+
+
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<H2>Current Ontology Text</H2>
+
+				<pre>{{adminController.ontologyText}}</pre>
+
+			</div>
+		</div>
+	</div>
+</div>
