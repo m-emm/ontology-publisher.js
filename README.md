@@ -8,6 +8,8 @@ The tool was inspired by [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), bu
 * a concept browser
 * some basic reasoning functionality (inference of inverses, inferable transitive relations) to make the resulting ontology document more complete and useful
 
+This application does **not** aim to be a modelling tool, therefore you can't change the ontology itself (use a tool such as Protégé for this purpose). It is meant to produce a browsable, viewable document to get feedback on your model from users and domain experts.
+
 ## Setup and start
 * clone the repository
 * `npm install`
@@ -34,9 +36,9 @@ The tool was inspired by [WebVOWL](https://github.com/VisualDataWeb/WebVOWL), bu
   You can upload the resulting document later, or share it with somebody else so they can look at your ontology and the views.
 
 ## Screensots
-![Individuals](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Individuals.png "Individuals")
 ![Concepts](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Concepts.png "Concepts")
-
+![Individuals](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/Individuals.png "Individuals")
+![Concept Browser](https://raw.githubusercontent.com/m-emm/ontology-publisher.js/master/doc/img/ConceptBrowser.png "Concept Browser")
 
 ## Acknowledgements
 * Thanks to the [rdflib.js](https://github.com/linkeddata/rdflib.js) team for their library which lets me directly import ontologies
