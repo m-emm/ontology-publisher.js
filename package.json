@@ -1,6 +1,6 @@
 {
-  "name": "module-name",
-  "version": "0.0.1",
+  "name": "ontology-publisher.js",
+  "version": "1.0.0",
   "description": "ontology-publisher.js",
   "author": "Markus Emmenegger",
   "contributors": [
@@ -68,6 +68,6 @@
     "webpack-shell-plugin": "^0.4.3"
   },
   "preferGlobal": true,
-  "private": true,
-  "license": "none"
+  "private": false,
+  "license": "MIT"
 }
